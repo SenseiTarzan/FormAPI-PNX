@@ -1,6 +1,6 @@
-# FormAPI | NukkitX
+# FormAPI | PowerNukkitX
 
-Simple library for creating forms (MCBE Nukkit)
+Simple library for creating forms (MCBE PowerNukkitX)
 
 <br/><br/>
 ## Examples:
