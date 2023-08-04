@@ -65,7 +65,7 @@ form.send(player);
 handler is run after leave setting
 ```java
 CustomForm customForm = new CustomForm((player, data) -> {
-        f(data == null) return;
+        if(data == null) return;
         player.sendMessage("test: " + data.get(0).toString()); // return Hello, i'am form server setting
         player.sendMessage("input: " + data.get("test")); //return input send by client
 });
