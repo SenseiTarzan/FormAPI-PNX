@@ -33,7 +33,7 @@ is exit of form
 
 ```java
 CustomForm customForm = new CustomForm((player, data) -> {
-        f(data == null) return;
+        ifdata == null) return;
         player.sendMessage("test: " + data.get(0).toString()); // return label element
         player.sendMessage("input: " + data.get("input1")); //return input send by client
 });
