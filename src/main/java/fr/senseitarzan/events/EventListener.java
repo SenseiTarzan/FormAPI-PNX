@@ -79,47 +79,4 @@ public class EventListener implements Listener {
         Form.playerForms.put(event.getPlayer(), new HashMap<>());
         Form.playerServerSettings.put(event.getPlayer(), new HashMap<>());
     }
-
-    @EventHandler(priority = EventPriority.HIGH)
-    public void onChat(PlayerChatEvent event) {
-        System.out.println("Chat");
-        if (Objects.equals(event.getMessage(), "test")) {
-            SimpleForm simpleForm = new SimpleForm((targetPlayer, data) -> {
-                targetPlayer.sendMessage(data == null ? "null" : data.toString()); // return "diamond" if click in button Hello because has label "diamond" else null for exit form
-            });
-            simpleForm.setTitle("From with label");
-            simpleForm.setContent("i'am a SimpleForm");
-            simpleForm.addButton("Hello", ImageType.PATH, "textures/items/diamond", "diamond");
-            simpleForm.send(event.getPlayer());
-        } else if (Objects.equals(event.getMessage(), "model-test")) {
-            ModalForm form = new ModalForm((targetPlayer, data) -> {
-                if(data == null) return;
-                targetPlayer.sendMessage(data.toString()); // return boolean
-            });
-            form.setTitle("It`s a title");
-            form.setContent("Sample text");
-            form.setButtonTrue("Positive button");
-            form.setButtonFalse("Negative button");
-            form.send(event.getPlayer());
-        } else if (Objects.equals(event.getMessage(), "custom-test")) {
-            CustomForm customForm = new CustomForm((player, data) -> {
-                player.sendMessage("test: " + data.get(0).toString()); // return label element
-                player.sendMessage("input: " + data.get("input1")); //return input send by client
-            });
-            customForm.setTitle("It`s a title");
-            customForm.addLabel("label element");
-            customForm.addInput(new ElementInput("Input button"), "input1");
-            customForm.send(event.getPlayer());
-        }else if (Objects.equals(event.getMessage(), "setting-test")) {
-            CustomForm customForm = new CustomForm((player, data) -> {
-                player.sendMessage("test: " + data.get(0).toString()); // return Hello, i'am form server setting
-                player.sendMessage("input: " + data.get("test")); //return input send by client
-            });
-            customForm.setTitle("Test Setting");
-            customForm.addLabel("Hello, i'am form server setting");
-            customForm.setIcon(ImageType.PATH,"textures/items/apple");
-            customForm.addInput(new ElementInput("test"), "test");
-            customForm.setFormSetting(event.getPlayer());
-        }
-    }
 }
