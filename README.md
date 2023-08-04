@@ -1,66 +1,84 @@
 # FormAPI | NukkitX
 
-Простой API для создания форм (MCBE Nukkit)
+Simple library for creating forms (MCBE Nukkit)
 
 <br/><br/>
-Примеры использования:
-<br/><br/>
-SimpleForm
+## Examples:
+
+### SimpleForm
+
 -----------------------------------
-<br/>
 
 ```java
-SimpleForm form = new SimpleForm("Тестовая форма")
-    .setContent("Здесь должен быть какой-то текст, но почему-то его все-таки нет.")
-    .addButton("Кнопочка")
-    .addButton("Кнопоча с алмазиком", ImageType.PATH, "textures/items/diamond");
-
-form.send(player, (targetPlayer, targetForm, data) -> {
-    if(data == -1) return; //Если форма закрыта принудительно, то data будет иметь значение -1
-    
-    targetPlayer.sendMessage(data.toString());
+SimpleForm simpleForm = new SimpleForm((targetPlayer, data) -> {
+        targetPlayer.sendMessage(data == null ? "null" : data.toString()); // return "diamond" if click in button Hello because has label "diamond" else null for exit form
 });
+simpleForm.setTitle("From with label");
+simpleForm.setContent("i'am a SimpleForm");
+simpleForm.addButton("Hello", ImageType.PATH, "textures/items/diamond", "diamond");
+simpleForm.send(event.getPlayer());
 ```
-
-![screenshot of sample](http://images.vfl.ru/ii/1576485918/351dffe3/28924854.png)
-<br/><br/>
-CustomForm
------------------------------------
+![image SimpleForm UI](./image/SimpleFormUI.png)
 <br/>
+is clicked in button Hello
+<br/>
+![image SimpleForm Handler](./image/SimpleFormHandlerClick.png)
+<br/>
+is exit of form
+<br/>
+![img_1.png](./image/ExitHandlerSimpleForm.png)
+### CustomForm
+
+-----------------------------------
 
 ```java
-CustomForm form = new CustomForm()
-    .addLabel("Тут должен быть написан какой-то рандомный текст, но написано это.")
-    .addDropDown("Выпадающий список", Arrays.asList("Вариант 1", "Вариант 2", "Вариант 3"))
-    .addInput("Текстовое поле")
-    .addSlider("Ползунок", 1, 100)
-    .addStepSlider("Пошаговый ползунок", Arrays.asList("Вариант 1", "Вариант 2", "Вариант 3"))
-    .addToggle("Переключатель", false);
-
-form.send(player, (targetPlayer, targetForm, data) -> {
-    if(data == null) return; //Если форма закрыта принудительно, то data будет иметь значение null
-    
-    targetPlayer.sendMessage(data.toString());
+CustomForm customForm = new CustomForm((player, data) -> {
+        f(data == null) return;
+        player.sendMessage("test: " + data.get(0).toString()); // return label element
+        player.sendMessage("input: " + data.get("input1")); //return input send by client
 });
+customForm.setTitle("It`s a title");
+customForm.addLabel("label element");
+customForm.addInput(new ElementInput("Input button"), "input1");
+customForm.send(event.getPlayer());
 ```         
+![image Custom Form UI](./image/CustomFormUI.png)
+![image Custom Form Handler](./image/CustomFormHandlerMessage.png)
+### ModalForm
 
-![screenshot of sample](http://images.vfl.ru/ii/1576486356/8c9f89a6/28924955.png)
-<br/><br/>
-ModalForm
 -----------------------------------
-<br/>
-
 ```java
-ModalForm form = new ModalForm("Заголовок", "Текст", "Кнопка 1", "Кнопка 2");
-
-form.send(player, (targetPlayer, targetForm, data) -> {
-    if(data == -1) return; //Если форма закрыта принудительно, то data будет иметь значение -1
-    
-    targetPlayer.sendMessage(data.toString());
+ModalForm form = new ModalForm((targetPlayer, data) -> {
+        if(data == null) return;
+        targetPlayer.sendMessage(data.toString());
 });
+form.setTitle("It`s a title");
+form.setContent("Sample text");
+form.setButtonTrue("Positive button");
+form.setButtonFalse("Negative button");
+form.send(player);
 ```
-                            
-![screenshot of sample](http://images.vfl.ru/ii/1576486613/7c402664/28925022.png)
+![ModelForm UI](./image/ModelFormUI.png)
+### Form in Server Setting
+
 -----------------------------------
-Скачать: https://github.com/qPexLegendary/FormAPI/releases <br>
-Пример плагина: https://github.com/qPexLegendary/Example-for-FormAPI
+handler is run after leave setting
+```java
+CustomForm customForm = new CustomForm((player, data) -> {
+        f(data == null) return;
+        player.sendMessage("test: " + data.get(0).toString()); // return Hello, i'am form server setting
+        player.sendMessage("input: " + data.get("test")); //return input send by client
+});
+customForm.setTitle("Test Setting");
+customForm.addLabel("Hello, i'am form server setting");
+customForm.setIcon(ImageType.PATH,"textures/items/apple");
+customForm.addInput(new ElementInput("test"), "test");
+customForm.setFormSetting(event.getPlayer());
+```
+![ServerForm UI](./image/ServerFormUI.png)
+<br/>
+After the processing phase, it defaults to the values sent by the client.
+<br/>
+![ServerFormHandlerMessage.png](./image/ServerFormHandlerMessage.png)
+![ServerForm2.png](./image/ServerForm2.png)
+-----------------------------------

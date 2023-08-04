@@ -1,10 +1,6 @@
 name: FormAPI
-main: ru.nukkitx.FormAPI
+main: fr.senseitarzan.FormAPI
 api: "1.0.9"
-version: "${pom.version}"
-author: qPexLegendary
+version: "1.0.0"
+author: SenseiTarzan
 load: STARTUP
-authors:
-  - qPexLegendary
-  - kkdevs
-  - Hteppl
