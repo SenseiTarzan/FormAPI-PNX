@@ -49,8 +49,7 @@ public class EventListener implements Listener {
                 @Override
                 public void onRun(int currentTick) {
                     settingsRequestMap.forEach((id, window) -> {
-                        System.out.println(window.getJSONData());
-                        ServerSettingsResponsePacket re = new ServerSettingsResponsePacket();
+                                         ServerSettingsResponsePacket re = new ServerSettingsResponsePacket();
                         re.formId = id;
                         re.data = window.getJSONData();
                         player.dataPacket(re);
