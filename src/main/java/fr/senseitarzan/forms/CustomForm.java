@@ -21,13 +21,18 @@ public class CustomForm extends Form {
         this.content = new ArrayList<>();
     }
     public CustomForm(CustomFormResponse handler) {
-        this.setHandler(handler);
         this.content = new ArrayList<>();
+        this.setHandler(handler);
     }
 
     public CustomForm(String title) {
         this.title = title;
         this.content = new ArrayList<>();
+    }
+    public CustomForm(String title, CustomFormResponse handler) {
+        this.title = title;
+        this.content = new ArrayList<>();
+        this.setHandler(handler);
     }
 
     public CustomForm setTitle(String value) {

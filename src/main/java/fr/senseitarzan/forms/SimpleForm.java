@@ -4,8 +4,6 @@ import cn.nukkit.Player;
 import cn.nukkit.form.element.*;
 import fr.senseitarzan.forms.responses.SimpleFormResponse;
 import fr.senseitarzan.forms.elements.ImageType;
-import org.checkerframework.checker.interning.qual.InternMethod;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;

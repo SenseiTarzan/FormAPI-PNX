@@ -4,10 +4,6 @@ import cn.nukkit.Player;
 import cn.nukkit.network.protocol.ModalFormRequestPacket;
 import com.google.gson.Gson;
 import fr.senseitarzan.forms.responses.FormResponse;
-import org.checkerframework.checker.interning.qual.InternMethod;
-import org.checkerframework.checker.interning.qual.Interned;
-
-import javax.annotation.Nullable;
 import java.util.*;
 
 public abstract class Form {

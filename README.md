@@ -81,4 +81,37 @@ After the processing phase, it defaults to the values sent by the client.
 <br/>
 ![ServerFormHandlerMessage.png](./image/ServerFormHandlerMessage.png)
 ![ServerForm2.png](./image/ServerForm2.png)
+
+## Import in Maven or gradle
+
 -----------------------------------
+### Maven
+````xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+````
+````xml
+<dependency>
+    <groupId>com.github.SenseiTarzan</groupId>
+    <artifactId>FormAPI-PNX</artifactId>
+    <version>1.0.1</version>
+</dependency>
+````
+### Gradle
+```kotlin
+repositories {
+    mavenCentral()
+    maven {
+        name = "jitpack"
+        url = uri("https://jitpack.io")
+    }
+}
+
+dependencies {
+    compileOnly("com.github.SenseiTarzan:FormAPI-PNX:1.0.1")
+}
+```

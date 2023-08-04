@@ -5,21 +5,15 @@ import cn.nukkit.Server;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.EventPriority;
 import cn.nukkit.event.Listener;
-import cn.nukkit.event.player.PlayerChatEvent;
 import cn.nukkit.event.player.PlayerJoinEvent;
 import cn.nukkit.event.player.PlayerQuitEvent;
 import cn.nukkit.event.player.PlayerServerSettingsRequestEvent;
 import cn.nukkit.event.server.DataPacketReceiveEvent;
-import cn.nukkit.form.element.ElementInput;
 import cn.nukkit.network.protocol.ModalFormResponsePacket;
 import cn.nukkit.network.protocol.ServerSettingsRequestPacket;
 import cn.nukkit.network.protocol.ServerSettingsResponsePacket;
 import cn.nukkit.scheduler.Task;
 import fr.senseitarzan.forms.Form;
-import fr.senseitarzan.forms.CustomForm;
-import fr.senseitarzan.forms.ModalForm;
-import fr.senseitarzan.forms.SimpleForm;
-import fr.senseitarzan.forms.elements.ImageType;
 
 import java.util.*;
 
